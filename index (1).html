@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matilde Baltazar | Psicóloga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#eae6df;
+    --mauve:#c19d8a;
+    --mauve-dark:#a9816d;
+    --maroon:#4a2c2a;
+    --charcoal:#2f3230;
+    --white:#fdfbf8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Jost', sans-serif;
+    color:var(--charcoal);
+    background:var(--cream);
+    font-weight:300;
+    line-height:1.6;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+  }
+  a{text-decoration:none; color:inherit;}
+  .btn{
+    display:inline-block;
+    padding:18px 40px;
+    border-radius:999px;
+    font-family:'Jost', sans-serif;
+    font-size:0.8rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    text-align:center;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+    cursor:pointer;
+    border:none;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-mauve{ background:var(--mauve); color:var(--white); }
+  .btn-mauve:hover{ box-shadow:0 10px 24px rgba(74,44,42,0.25); }
+  .btn-white{ background:var(--white); color:var(--mauve-dark); }
+  .btn-white:hover{ box-shadow:0 10px 24px rgba(0,0,0,0.15); }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:absolute;
+    top:0; left:0; right:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:34px 5%;
+    z-index:10;
+  }
+  .nav .brand{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.7rem;
+    color:var(--white);
+    letter-spacing:0.02em;
+  }
+  .nav .links{ display:flex; gap:44px; }
+  .nav .links a{
+    color:var(--white);
+    font-size:0.95rem;
+    letter-spacing:0.03em;
+  }
+  .nav .links a:hover{ opacity:0.75; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .hero svg{
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    object-fit:cover;
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+    margin:0 auto;
+    padding:0 5%;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .hero h1{
+    color:var(--white);
+    font-size:clamp(2.4rem, 5.5vw, 4.6rem);
+    font-style:italic;
+    line-height:1.15;
+    margin-bottom:56px;
+    text-shadow:0 2px 20px rgba(0,0,0,0.15);
+  }
+
+  /* ---------- INTRO ---------- */
+  .intro{
+    background:var(--mauve);
+    color:var(--white);
+    padding:110px 5% 130px;
+  }
+  .ticker{
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(1.4rem, 3vw, 2.4rem);
+    white-space:nowrap;
+    overflow:hidden;
+    opacity:0.95;
+    margin-bottom:120px;
+    display:flex;
+    gap:28px;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .ticker span.sep{ opacity:0.6; }
+  .intro-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr 1fr;
+    gap:60px;
+    align-items:start;
+  }
+  .intro-grid h2{
+    font-size:clamp(2.2rem, 4vw, 3.4rem);
+    line-height:1.15;
+  }
+  .intro-grid p{
+    font-size:1.02rem;
+    font-weight:300;
+    opacity:0.95;
+  }
+
+  /* ---------- ART SECTION ---------- */
+  .art-section{
+    position:relative;
+    background:var(--cream);
+    padding:90px 5%;
+    display:flex;
+    justify-content:center;
+  }
+  .art-frame{
+    position:relative;
+    width:100%;
+    max-width:900px;
+    aspect-ratio:16/11;
+  }
+  .art-frame svg{
+    width:100%;
+    height:100%;
+    display:block;
+  }
+  .art-frame .btn{
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+  }
+  .art-frame .btn:hover{ transform:translate(-50%,-50%) translateY(-2px); }
+  .art-caption{
+    text-align:center;
+    font-size:0.85rem;
+    color:var(--charcoal);
+    opacity:0.6;
+    margin-top:22px;
+    font-style:italic;
+  }
+
+  /* ---------- PHILOSOPHY / SOBRE ---------- */
+  .philosophy{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:var(--cream);
+  }
+  .philosophy-text{
+    padding:110px 8% 90px;
+  }
+  .philosophy-text h2{
+    font-size:clamp(2.4rem, 4.5vw, 3.6rem);
+    margin-bottom:34px;
+  }
+  .philosophy-text > p{
+    font-size:1.05rem;
+    max-width:520px;
+    margin-bottom:60px;
+    opacity:0.9;
+  }
+  .accordion{
+    max-width:560px;
+    border-top:1px solid rgba(47,50,48,0.35);
+  }
+  .accordion-item{
+    border-bottom:1px solid rgba(47,50,48,0.35);
+  }
+  .accordion-item summary{
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:26px 0;
+    cursor:pointer;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.5rem;
+  }
+  .accordion-item summary::-webkit-details-marker{ display:none; }
+  .accordion-item summary .plus{
+    font-family:'Jost', sans-serif;
+    font-size:1.4rem;
+    font-weight:300;
+    transition:transform 0.25s ease;
+    flex-shrink:0;
+    margin-left:20px;
+  }
+  .accordion-item[open] summary .plus{ transform:rotate(45deg); }
+  .accordion-item .panel{
+    padding:0 0 26px;
+    font-size:1rem;
+    opacity:0.9;
+    max-width:500px;
+  }
+  .philosophy-image{
+    position:relative;
+    min-height:460px;
+  }
+  .philosophy-image svg{
+    width:100%;
+    height:100%;
+    display:block;
+  }
+  .philosophy-image .caption{
+    position:absolute;
+    bottom:24px;
+    right:24px;
+    color:var(--white);
+    font-size:0.8rem;
+    opacity:0.85;
+    text-align:right;
+    text-shadow:0 1px 6px rgba(0,0,0,0.4);
+  }
+  @media (max-width:900px){
+    .philosophy{ grid-template-columns:1fr; }
+    .philosophy-image{ min-height:340px; order:-1; }
+    .philosophy-text{ padding:60px 7% 60px; }
+  }
+
+  /* ---------- BOOKING FORM ---------- */
+  .booking{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:100vh;
+    background:var(--cream);
+  }
+  .booking-form{
+    padding:110px 8% 80px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .booking-form h2{
+    font-size:clamp(2.4rem, 4.5vw, 3.6rem);
+    margin-bottom:44px;
+  }
+  .field{
+    margin-bottom:36px;
+  }
+  .field-row{
+    display:flex;
+    gap:40px;
+  }
+  .field-row .field{ flex:1; }
+  .field label{
+    display:block;
+    font-size:1.05rem;
+    margin-bottom:10px;
+  }
+  .field label .req{
+    font-size:0.85rem;
+    opacity:0.55;
+    font-weight:300;
+  }
+  .field input,
+  .field textarea{
+    width:100%;
+    border:none;
+    border-bottom:1px solid rgba(47,50,48,0.4);
+    background:transparent;
+    padding:8px 2px;
+    font-family:'Jost', sans-serif;
+    font-size:1rem;
+    color:var(--charcoal);
+    outline:none;
+  }
+  .field input:focus,
+  .field textarea:focus{
+    border-bottom:1px solid var(--charcoal);
+  }
+  .field textarea{
+    resize:vertical;
+    min-height:70px;
+  }
+  .booking-form button.btn{
+    align-self:flex-start;
+    margin-top:10px;
+  }
+  .booking-image{
+    position:relative;
+    min-height:420px;
+    overflow:hidden;
+  }
+  .booking-image svg{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+  }
+  .booking-image .caption{
+    position:absolute;
+    bottom:26px;
+    left:0; right:0;
+    text-align:center;
+    color:var(--white);
+    font-size:0.85rem;
+    opacity:0.85;
+    font-style:italic;
+    text-shadow:0 1px 6px rgba(0,0,0,0.3);
+  }
+  .form-note{
+    font-size:0.85rem;
+    opacity:0.6;
+    margin-top:18px;
+  }
+  @media (max-width:900px){
+    .booking{ grid-template-columns:1fr; }
+    .booking-image{ min-height:340px; order:-1; }
+    .booking-form{ padding:60px 7% 70px; }
+    .field-row{ flex-direction:column; gap:0; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--cream);
+    padding:90px 5% 70px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:40px;
+    border-top:1px solid rgba(47,50,48,0.1);
+  }
+  footer .who h2{
+    font-size:clamp(2.4rem, 4.5vw, 3.6rem);
+    margin-bottom:18px;
+  }
+  footer .who p{
+    font-size:1rem;
+    margin-bottom:4px;
+  }
+  footer .contact{
+    text-align:right;
+  }
+  footer .contact a{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.5rem;
+    border-bottom:1px solid transparent;
+  }
+  footer .contact a:hover{
+    border-bottom:1px solid var(--charcoal);
+  }
+  footer .cta-row{
+    width:100%;
+    margin-top:50px;
+    display:flex;
+    justify-content:center;
+  }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width:760px){
+    .nav{ padding:22px 6%; }
+    .nav .links{ gap:22px; }
+    .nav .links a{ font-size:0.82rem; }
+    .nav .brand{ font-size:1.3rem; }
+    .intro{ padding:80px 6% 90px; }
+    .ticker{ margin-bottom:70px; font-size:1.3rem; }
+    .intro-grid{ grid-template-columns:1fr; gap:36px; }
+    .art-frame{ aspect-ratio:4/5; }
+    footer{ flex-direction:column; }
+    footer .contact{ text-align:left; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="topo">
+    <svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d9c3b3"/>
+          <stop offset="100%" stop-color="#b99e8e"/>
+        </linearGradient>
+      </defs>
+      <rect width="1600" height="1000" fill="url(#skyGrad)"/>
+      <path d="M0,120 C300,40 500,180 800,110 C1100,40 1350,140 1600,80 L1600,0 L0,0 Z" fill="#e3d2c3" opacity="0.55"/>
+      <path d="M0,300 C280,220 520,340 820,260 C1120,180 1360,300 1600,230 L1600,0 L0,0 Z" fill="#cbaf9c" opacity="0.5"/>
+      <path d="M0,520 C260,430 560,560 860,470 C1140,390 1400,500 1600,430 L1600,1000 L0,1000 Z" fill="#a9887a" opacity="0.75"/>
+      <path d="M0,650 C300,600 550,700 850,630 C1150,560 1380,660 1600,600 L1600,1000 L0,1000 Z" fill="#8a6559" opacity="0.85"/>
+      <path d="M950,1000 C1050,760 1250,700 1420,760 C1550,810 1600,900 1600,1000 Z" fill="#4a2c2a"/>
+      <path d="M1080,1000 C1160,850 1300,820 1420,880 C1520,920 1580,960 1600,1000 Z" fill="#3a201e"/>
+      <ellipse cx="1330" cy="960" rx="70" ry="30" fill="#2c1613"/>
+    </svg>
+    <nav class="nav">
+      <a href="#topo" class="brand">Matilde Baltazar</a>
+      <div class="links">
+        <a href="#sobre">Sobre</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+    <div class="hero-content">
+      <h1>The only way out is through</h1>
+      <a href="#marcar" class="btn btn-mauve">Marcar Consulta</a>
+    </div>
+  </section>
+
+  <!-- ================= INTRO / SOBRE ================= -->
+  <section class="intro">
+    <div class="ticker">
+      <span>Português e Inglês</span><span class="sep">|</span>
+      <span>Presencial e Online</span>
+    </div>
+    <div class="intro-grid">
+      <h2>Mais que uma<br>conversa</h2>
+      <p>Aqui, pensamos em conjunto. Através de uma relação terapêutica segura e de confiança, olhamos para as diferentes camadas que compõem a sua vida.</p>
+      <p>Aqui, proporciona-se um lugar sem julgamento. Confrontamos aquilo que é mais difícil, para que um dia o deixe de ser.</p>
+    </div>
+  </section>
+
+  <!-- ================= FILOSOFIA / SOBRE ================= -->
+  <section class="philosophy" id="sobre">
+    <div class="philosophy-text">
+      <h2>A minha filosofia</h2>
+      <p>Acredito que toda e qualquer pessoa necessita de um espaço onde possa ser escutada e acolhida, e onde, através do estabelecimento de uma relação terapêutica, possa refletir livremente sobre o que a preocupa.</p>
+
+      <div class="accordion">
+        <details class="accordion-item">
+          <summary>Abordagem psicodinâmica <span class="plus">+</span></summary>
+          <div class="panel">Uma abordagem que considera o aqui e o agora, os acontecimentos passados e a relação terapêutica.</div>
+        </details>
+        <details class="accordion-item">
+          <summary>Setting das consultas <span class="plus">+</span></summary>
+          <div class="panel">As consultas são realizadas num espaço acolhedor e seguro, e têm uma duração de 45 minutos.</div>
+        </details>
+        <details class="accordion-item">
+          <summary>Acessibilidade <span class="plus">+</span></summary>
+          <div class="panel">O consultório encontra-se localizado no Campo Pequeno, com acessos a transportes públicos (metro, autocarro, comboio).<br><br>O edifício dispõe de dois elevadores, e existe uma casa de banho no consultório.</div>
+        </details>
+      </div>
+    </div>
+    <div class="philosophy-image">
+      <svg viewBox="0 0 900 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="900" height="1000" fill="#c9531e"/>
+        <path d="M0,0 L900,0 L900,650 C750,700 700,560 600,500 C480,430 420,560 300,600 C160,645 60,560 0,600 Z" fill="#232323"/>
+        <path d="M0,600 C60,560 160,645 300,600 C420,560 480,430 600,500 C700,560 750,700 900,650 L900,760 C760,800 700,690 590,650 C470,610 430,720 300,740 C160,760 70,700 0,740 Z" fill="#1a1a1a"/>
+        <rect y="740" width="900" height="260" fill="#c78a3c" opacity="0.9"/>
+        <path d="M0,760 C160,700 470,610 590,650 C700,690 760,800 900,760 L900,1000 L0,1000 Z" fill="#8f6528"/>
+        <g stroke="#3a2a10" stroke-width="4" fill="none" stroke-linecap="round">
+          <path d="M400,980 C400,930 390,890 400,850"/>
+          <path d="M400,900 C370,870 360,850 340,830"/>
+          <path d="M400,880 C430,850 440,830 460,810"/>
+          <path d="M400,850 C420,820 430,800 450,780"/>
+          <path d="M400,860 C380,830 375,815 360,795"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ================= ART / MARCAR CONSULTA ================= -->
+  <section class="art-section">
+    <div>
+      <div class="art-frame">
+        <svg viewBox="0 0 800 550" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="ovalClip">
+              <ellipse cx="400" cy="275" rx="380" ry="270"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#ovalClip)">
+            <rect width="800" height="550" fill="#e8b989"/>
+            <path d="M0,60 C150,20 300,90 450,50 C600,10 700,70 800,40 L800,0 L0,0 Z" fill="#f0cba0"/>
+            <path d="M0,140 C160,100 320,170 480,120 C630,80 720,140 800,110 L800,60 C700,90 600,20 450,60 C300,100 150,30 0,70 Z" fill="#2c1c14"/>
+            <path d="M0,170 C160,130 320,200 480,150 C630,110 720,170 800,140 L800,120 C700,150 630,90 480,130 C320,180 160,110 0,150 Z" fill="#c07a4c"/>
+            <path d="M0,260 C150,200 300,290 460,230 C600,180 700,250 800,210 L800,150 C700,180 630,120 480,160 C320,210 160,140 0,180 Z" fill="#5a6b4e"/>
+            <path d="M0,320 C180,270 320,340 470,290 C610,250 700,310 800,270 L800,220 C700,260 610,190 470,240 C320,290 180,220 0,270 Z" fill="#20291f"/>
+            <path d="M0,430 C200,390 350,450 500,400 C650,360 720,420 800,390 L800,280 C700,320 610,260 470,300 C320,350 180,280 0,330 Z" fill="#7896ab"/>
+            <path d="M0,460 C220,440 380,480 520,450 C660,420 730,450 800,430 L800,400 C700,430 650,380 500,410 C350,460 200,400 0,440 Z" fill="#e0a184"/>
+            <path d="M0,490 C220,470 400,505 540,480 C670,455 740,480 800,465 L800,440 C730,460 660,430 520,460 C380,490 220,450 0,470 Z" fill="#8a6559"/>
+            <path d="M0,510 C230,495 420,525 560,505 C680,488 740,505 800,495 L800,475 C740,490 670,465 540,490 C400,515 220,480 0,495 Z" fill="#c9b8e0"/>
+            <path d="M0,530 C240,515 440,540 580,522 C690,508 745,522 800,515 L800,500 C745,512 680,498 560,515 C420,535 230,510 0,520 Z" fill="#c07a4c"/>
+            <path d="M0,550 C260,535 460,555 600,540 C700,528 750,538 800,532 L800,520 C750,528 690,518 580,532 C440,550 240,530 0,545 Z" fill="#f4ede2"/>
+            <path d="M0,550 L800,550 L800,540 C700,555 600,510 500,540 C380,575 200,530 0,555 Z" fill="#1c231a"/>
+          </g>
+          <ellipse cx="400" cy="275" rx="380" ry="270" fill="none" stroke="none"/>
+        </svg>
+        <a href="#marcar" class="btn btn-white">Marcar Consulta</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MARCAR CONSULTA (FORM) ================= -->
+  <section class="booking" id="marcar">
+    <div class="booking-form">
+      <h2>Marcar consulta</h2>
+      <!-- Este formulário usa o serviço gratuito formsubmit.co para enviar os pedidos
+           diretamente para o teu email, sem precisares de servidor.
+           Substitui SEUEMAIL@gmail.com pelo teu email antes de publicares o site. -->
+      <form action="https://formsubmit.co/matildecbaltazar@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Novo pedido de consulta — site">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+
+        <div class="field-row">
+          <div class="field">
+            <label>Nome <span class="req">(obrigatório)</span></label>
+            <input type="text" name="Nome" required>
+          </div>
+          <div class="field">
+            <label>Sobrenome <span class="req">(obrigatório)</span></label>
+            <input type="text" name="Sobrenome" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Email <span class="req">(obrigatório)</span></label>
+          <input type="email" name="Email" required>
+        </div>
+
+        <div class="field">
+          <label>Mensagem <span class="req">(obrigatório)</span></label>
+          <textarea name="Mensagem" rows="3" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-mauve">Enviar</button>
+      </form>
+      <p class="form-note">Ao enviar, receberás uma resposta por email a confirmar a consulta.</p>
+    </div>
+    <div class="booking-image">
+      <svg viewBox="0 0 700 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="700" height="800" fill="#4a6fa5"/>
+        <path d="M180,60 C120,180 110,320 140,470 C165,590 220,700 300,760 L420,760 C500,690 545,570 560,440 C575,300 540,160 470,60 C400,10 250,10 180,60 Z" fill="#ead9c5"/>
+        <path d="M260,140 C210,240 200,360 220,480 C238,580 275,660 330,710 L390,710 C440,660 470,580 480,480 C495,360 480,240 430,150 C380,110 305,105 260,140 Z" fill="#e2a13a"/>
+        <ellipse cx="520" cy="330" rx="55" ry="70" fill="#3a5f8a"/>
+        <ellipse cx="470" cy="470" rx="60" ry="55" fill="#3a5f8a"/>
+        <path d="M300,720 C330,690 350,650 380,650 C410,650 430,690 460,720 L460,760 L300,760 Z" fill="#7c9a5e"/>
+        <ellipse cx="330" cy="300" rx="38" ry="60" fill="#7c9a5e"/>
+        <ellipse cx="560" cy="600" rx="45" ry="65" fill="#e8c34a"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER / CONTACTO ================= -->
+  <footer id="contacto">
+    <div class="who">
+      <h2>Matilde Baltazar</h2>
+      <p>Consultas presenciais e online</p>
+      <p>Lisboa, Campo Pequeno</p>
+    </div>
+    <div class="contact">
+      <a href="mailto:matildecbaltazar@gmail.com">matildecbaltazar@gmail.com</a>
+    </div>
+    <div class="cta-row">
+      <a href="#marcar" class="btn btn-mauve">Marcar Consulta</a>
+    </div>
+  </footer>
+
+</body>
+</html>
