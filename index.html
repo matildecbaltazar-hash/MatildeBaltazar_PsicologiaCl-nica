@@ -108,6 +108,28 @@
     margin-bottom:56px;
     text-shadow:0 2px 20px rgba(0,0,0,0.15);
   }
+  .hero-credentials{
+    position:absolute;
+    left:5%;
+    bottom:34px;
+    z-index:2;
+    color:var(--white);
+    text-shadow:0 1px 10px rgba(0,0,0,0.25);
+  }
+  .hero-credentials .title{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.15rem;
+    letter-spacing:0.02em;
+  }
+  .hero-credentials .cedula{
+    font-size:0.8rem;
+    letter-spacing:0.05em;
+    opacity:0.85;
+    margin-top:6px;
+  }
+  @media (max-width:760px){
+    .hero-credentials{ left:6%; bottom:24px; }
+  }
 
   /* ---------- INTRO ---------- */
   .intro{
@@ -143,40 +165,6 @@
     font-size:1.02rem;
     font-weight:300;
     opacity:0.95;
-  }
-
-  /* ---------- ART SECTION ---------- */
-  .art-section{
-    position:relative;
-    background:var(--cream);
-    padding:90px 5%;
-    display:flex;
-    justify-content:center;
-  }
-  .art-frame{
-    position:relative;
-    width:100%;
-    max-width:900px;
-    aspect-ratio:16/11;
-  }
-  .art-frame svg{
-    width:100%;
-    height:100%;
-    display:block;
-  }
-  .art-frame .btn{
-    position:absolute;
-    top:50%; left:50%;
-    transform:translate(-50%,-50%);
-  }
-  .art-frame .btn:hover{ transform:translate(-50%,-50%) translateY(-2px); }
-  .art-caption{
-    text-align:center;
-    font-size:0.85rem;
-    color:var(--charcoal);
-    opacity:0.6;
-    margin-top:22px;
-    font-style:italic;
   }
 
   /* ---------- PHILOSOPHY / SOBRE ---------- */
@@ -353,37 +341,35 @@
   footer{
     background:var(--cream);
     padding:90px 5% 70px;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:40px;
     border-top:1px solid rgba(47,50,48,0.1);
+  }
+  footer .who{
+    max-width:1100px;
+    margin:0 auto;
+  }
+  footer .name-row{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:16px 40px;
+    margin-bottom:18px;
   }
   footer .who h2{
     font-size:clamp(2.4rem, 4.5vw, 3.6rem);
-    margin-bottom:18px;
+    margin:0;
   }
   footer .who p{
     font-size:1rem;
     margin-bottom:4px;
   }
-  footer .contact{
-    text-align:right;
-  }
-  footer .contact a{
+  footer .footer-email{
     font-family:'Cormorant Garamond', serif;
     font-size:1.5rem;
     border-bottom:1px solid transparent;
   }
-  footer .contact a:hover{
+  footer .footer-email:hover{
     border-bottom:1px solid var(--charcoal);
-  }
-  footer .cta-row{
-    width:100%;
-    margin-top:50px;
-    display:flex;
-    justify-content:center;
   }
 
   /* ---------- MOBILE ---------- */
@@ -395,9 +381,7 @@
     .intro{ padding:80px 6% 90px; }
     .ticker{ margin-bottom:70px; font-size:1.3rem; }
     .intro-grid{ grid-template-columns:1fr; gap:36px; }
-    .art-frame{ aspect-ratio:4/5; }
-    footer{ flex-direction:column; }
-    footer .contact{ text-align:left; }
+    footer .name-row{ flex-direction:column; align-items:flex-start; gap:10px; }
   }
 </style>
 </head>
@@ -432,18 +416,9 @@
       <h1>The only way out is through</h1>
       <a href="#marcar" class="btn btn-mauve">Marcar Consulta</a>
     </div>
-  </section>
-
-  <!-- ================= INTRO / SOBRE ================= -->
-  <section class="intro">
-    <div class="ticker">
-      <span>Português e Inglês</span><span class="sep">|</span>
-      <span>Presencial e Online</span>
-    </div>
-    <div class="intro-grid">
-      <h2>Mais que uma<br>conversa</h2>
-      <p>Aqui, pensamos em conjunto. Através de uma relação terapêutica segura e de confiança, olhamos para as diferentes camadas que compõem a sua vida.</p>
-      <p>Aqui, proporciona-se um lugar sem julgamento. Confrontamos aquilo que é mais difícil, para que um dia o deixe de ser.</p>
+    <div class="hero-credentials">
+      <div class="title">Mestre em Psicologia Clínica</div>
+      <div class="cedula">Cédula OPP: 136013</div>
     </div>
   </section>
 
@@ -486,40 +461,33 @@
     </div>
   </section>
 
-  <!-- ================= ART / MARCAR CONSULTA ================= -->
-  <section class="art-section">
-    <div>
-      <div class="art-frame">
-        <svg viewBox="0 0 800 550" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="ovalClip">
-              <ellipse cx="400" cy="275" rx="380" ry="270"/>
-            </clipPath>
-          </defs>
-          <g clip-path="url(#ovalClip)">
-            <rect width="800" height="550" fill="#e8b989"/>
-            <path d="M0,60 C150,20 300,90 450,50 C600,10 700,70 800,40 L800,0 L0,0 Z" fill="#f0cba0"/>
-            <path d="M0,140 C160,100 320,170 480,120 C630,80 720,140 800,110 L800,60 C700,90 600,20 450,60 C300,100 150,30 0,70 Z" fill="#2c1c14"/>
-            <path d="M0,170 C160,130 320,200 480,150 C630,110 720,170 800,140 L800,120 C700,150 630,90 480,130 C320,180 160,110 0,150 Z" fill="#c07a4c"/>
-            <path d="M0,260 C150,200 300,290 460,230 C600,180 700,250 800,210 L800,150 C700,180 630,120 480,160 C320,210 160,140 0,180 Z" fill="#5a6b4e"/>
-            <path d="M0,320 C180,270 320,340 470,290 C610,250 700,310 800,270 L800,220 C700,260 610,190 470,240 C320,290 180,220 0,270 Z" fill="#20291f"/>
-            <path d="M0,430 C200,390 350,450 500,400 C650,360 720,420 800,390 L800,280 C700,320 610,260 470,300 C320,350 180,280 0,330 Z" fill="#7896ab"/>
-            <path d="M0,460 C220,440 380,480 520,450 C660,420 730,450 800,430 L800,400 C700,430 650,380 500,410 C350,460 200,400 0,440 Z" fill="#e0a184"/>
-            <path d="M0,490 C220,470 400,505 540,480 C670,455 740,480 800,465 L800,440 C730,460 660,430 520,460 C380,490 220,450 0,470 Z" fill="#8a6559"/>
-            <path d="M0,510 C230,495 420,525 560,505 C680,488 740,505 800,495 L800,475 C740,490 670,465 540,490 C400,515 220,480 0,495 Z" fill="#c9b8e0"/>
-            <path d="M0,530 C240,515 440,540 580,522 C690,508 745,522 800,515 L800,500 C745,512 680,498 560,515 C420,535 230,510 0,520 Z" fill="#c07a4c"/>
-            <path d="M0,550 C260,535 460,555 600,540 C700,528 750,538 800,532 L800,520 C750,528 690,518 580,532 C440,550 240,530 0,545 Z" fill="#f4ede2"/>
-            <path d="M0,550 L800,550 L800,540 C700,555 600,510 500,540 C380,575 200,530 0,555 Z" fill="#1c231a"/>
-          </g>
-          <ellipse cx="400" cy="275" rx="380" ry="270" fill="none" stroke="none"/>
-        </svg>
-        <a href="#marcar" class="btn btn-white">Marcar Consulta</a>
-      </div>
+  <!-- ================= INTRO ================= -->
+  <section class="intro">
+    <div class="ticker">
+      <span>Português e Inglês</span><span class="sep">|</span>
+      <span>Presencial e Online</span>
+    </div>
+    <div class="intro-grid">
+      <h2>Mais que uma<br>conversa</h2>
+      <p>Aqui, pensamos em conjunto. Através de uma relação terapêutica segura e de confiança, olhamos para as diferentes camadas que compõem a sua vida.</p>
+      <p>Aqui, proporciona-se um lugar sem julgamento. Confrontamos aquilo que é mais difícil, para que um dia o deixe de ser.</p>
     </div>
   </section>
 
   <!-- ================= MARCAR CONSULTA (FORM) ================= -->
   <section class="booking" id="marcar">
+    <div class="booking-image">
+      <svg viewBox="0 0 700 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="700" height="800" fill="#4a6fa5"/>
+        <path d="M180,60 C120,180 110,320 140,470 C165,590 220,700 300,760 L420,760 C500,690 545,570 560,440 C575,300 540,160 470,60 C400,10 250,10 180,60 Z" fill="#ead9c5"/>
+        <path d="M260,140 C210,240 200,360 220,480 C238,580 275,660 330,710 L390,710 C440,660 470,580 480,480 C495,360 480,240 430,150 C380,110 305,105 260,140 Z" fill="#e2a13a"/>
+        <ellipse cx="520" cy="330" rx="55" ry="70" fill="#3a5f8a"/>
+        <ellipse cx="470" cy="470" rx="60" ry="55" fill="#3a5f8a"/>
+        <path d="M300,720 C330,690 350,650 380,650 C410,650 430,690 460,720 L460,760 L300,760 Z" fill="#7c9a5e"/>
+        <ellipse cx="330" cy="300" rx="38" ry="60" fill="#7c9a5e"/>
+        <ellipse cx="560" cy="600" rx="45" ry="65" fill="#e8c34a"/>
+      </svg>
+    </div>
     <div class="booking-form">
       <h2>Marcar consulta</h2>
       <!-- Este formulário usa o serviço gratuito formsubmit.co para enviar os pedidos
@@ -553,34 +521,19 @@
 
         <button type="submit" class="btn btn-mauve">Enviar</button>
       </form>
-      <p class="form-note">Ao enviar, receberás uma resposta por email a confirmar a consulta.</p>
-    </div>
-    <div class="booking-image">
-      <svg viewBox="0 0 700 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <rect width="700" height="800" fill="#4a6fa5"/>
-        <path d="M180,60 C120,180 110,320 140,470 C165,590 220,700 300,760 L420,760 C500,690 545,570 560,440 C575,300 540,160 470,60 C400,10 250,10 180,60 Z" fill="#ead9c5"/>
-        <path d="M260,140 C210,240 200,360 220,480 C238,580 275,660 330,710 L390,710 C440,660 470,580 480,480 C495,360 480,240 430,150 C380,110 305,105 260,140 Z" fill="#e2a13a"/>
-        <ellipse cx="520" cy="330" rx="55" ry="70" fill="#3a5f8a"/>
-        <ellipse cx="470" cy="470" rx="60" ry="55" fill="#3a5f8a"/>
-        <path d="M300,720 C330,690 350,650 380,650 C410,650 430,690 460,720 L460,760 L300,760 Z" fill="#7c9a5e"/>
-        <ellipse cx="330" cy="300" rx="38" ry="60" fill="#7c9a5e"/>
-        <ellipse cx="560" cy="600" rx="45" ry="65" fill="#e8c34a"/>
-      </svg>
+      <p class="form-note">Ao enviar, receberá uma resposta por email a confirmar a consulta.</p>
     </div>
   </section>
 
   <!-- ================= FOOTER / CONTACTO ================= -->
   <footer id="contacto">
     <div class="who">
-      <h2>Matilde Baltazar</h2>
+      <div class="name-row">
+        <h2>Matilde Baltazar</h2>
+        <a href="mailto:matildecbaltazar@gmail.com" class="footer-email">matildecbaltazar@gmail.com</a>
+      </div>
       <p>Consultas presenciais e online</p>
       <p>Lisboa, Campo Pequeno</p>
-    </div>
-    <div class="contact">
-      <a href="mailto:matildecbaltazar@gmail.com">matildecbaltazar@gmail.com</a>
-    </div>
-    <div class="cta-row">
-      <a href="#marcar" class="btn btn-mauve">Marcar Consulta</a>
     </div>
   </footer>
 
