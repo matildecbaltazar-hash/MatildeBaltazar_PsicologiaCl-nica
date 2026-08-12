@@ -137,20 +137,40 @@
     color:var(--white);
     padding:110px 5% 130px;
   }
-  .ticker{
-    font-family:'Cormorant Garamond', serif;
-    font-size:clamp(1.4rem, 3vw, 2.4rem);
-    white-space:nowrap;
+  .ticker-wrap{
     overflow:hidden;
-    opacity:0.95;
+    width:100%;
     margin-bottom:120px;
-    display:flex;
-    gap:28px;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
+    -webkit-mask-image:linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+    mask-image:linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
   }
-  .ticker span.sep{ opacity:0.6; }
+  .ticker-track{
+    display:inline-flex;
+    width:max-content;
+    animation:ticker-scroll 22s linear infinite;
+    will-change:transform;
+  }
+  .ticker-group{
+    display:inline-flex;
+    align-items:center;
+    flex-shrink:0;
+    gap:28px;
+    padding-right:28px;
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    font-size:clamp(1.1rem, 2.2vw, 1.7rem);
+    letter-spacing:0.05em;
+    white-space:nowrap;
+    opacity:0.95;
+  }
+  .ticker-group .sep{ opacity:0.6; }
+  @keyframes ticker-scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{ animation:none; }
+  }
   .intro-grid{
     display:grid;
     grid-template-columns:1.1fr 1fr 1fr;
@@ -165,6 +185,9 @@
     font-size:1.02rem;
     font-weight:300;
     opacity:0.95;
+  }
+  @media (max-width:900px){
+    .intro-grid{ grid-template-columns:1fr; gap:36px; }
   }
 
   /* ---------- PHILOSOPHY / SOBRE ---------- */
@@ -379,9 +402,21 @@
     .nav .links a{ font-size:0.82rem; }
     .nav .brand{ font-size:1.3rem; }
     .intro{ padding:80px 6% 90px; }
-    .ticker{ margin-bottom:70px; font-size:1.3rem; }
-    .intro-grid{ grid-template-columns:1fr; gap:36px; }
+    .ticker-wrap{ margin-bottom:70px; }
+    .ticker-group{ font-size:1.05rem; padding-right:20px; }
     footer .name-row{ flex-direction:column; align-items:flex-start; gap:10px; }
+  }
+
+  /* ---------- MOBILE PEQUENO (telemóveis estreitos) ---------- */
+  @media (max-width:420px){
+    .nav{ padding:18px 6%; }
+    .nav .brand{ font-size:1.1rem; }
+    .nav .links{ gap:14px; }
+    .nav .links a{ font-size:0.72rem; }
+    .btn{ padding:15px 28px; font-size:0.72rem; letter-spacing:0.12em; }
+    .hero h1{ margin-bottom:40px; }
+    .hero-credentials{ left:6%; bottom:18px; }
+    .hero-credentials .title{ font-size:1rem; }
   }
 </style>
 </head>
@@ -463,9 +498,17 @@
 
   <!-- ================= INTRO ================= -->
   <section class="intro">
-    <div class="ticker">
-      <span>Português e Inglês</span><span class="sep">|</span>
-      <span>Presencial e Online</span>
+    <div class="ticker-wrap">
+      <div class="ticker-track">
+        <div class="ticker-group">
+          <span>Português e Inglês</span><span class="sep">|</span>
+          <span>Presencial e Online</span><span class="sep">|</span>
+        </div>
+        <div class="ticker-group">
+          <span>Português e Inglês</span><span class="sep">|</span>
+          <span>Presencial e Online</span><span class="sep">|</span>
+        </div>
+      </div>
     </div>
     <div class="intro-grid">
       <h2>Mais que uma<br>conversa</h2>
